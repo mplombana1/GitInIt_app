@@ -1,0 +1,42 @@
+<div class="user-show-page">
+
+	<h5><%= @user.name %><br></h5>
+	<h5><%= @user.email %><br></h5>
+
+
+		<% @user.transactions.each do |transaction| %>
+		<%= link_to charge_path(transaction) do %>
+
+		<div id="past-transactions">
+			<div id="trans-time">Purchased at <%= transaction.created_at.strftime('%m/%d/%Y - %l:%M %P') %></div>
+	  	<h4><%= transaction.promotion.venue.name %><br></h4>
+	  	<%= transaction.promotion.name %><br>
+			<div id="trans-price"><h4>$<%= transaction.promotion.price %></h4></div>
+	  	<div><%= transaction.confirmation_code %><br></div>
+		</div>
+			<% end %>
+		<% end %>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <!-- <div class="modal-footer"> -->
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      <!-- </div> -->
+    </div>
+  </div>
+</div>

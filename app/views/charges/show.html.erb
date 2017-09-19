@@ -1,0 +1,7 @@
+<% if current_user %>
+	<%= render 'confirmation' %>
+<% end %>
+
+<% if current_venue %>
+	<%= render 'toggleform', transaction: @transaction, url: confirm_transaction_path(@transaction) %>
+<% end %>

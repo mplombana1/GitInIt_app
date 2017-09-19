@@ -1,0 +1,8 @@
+<div class="conf-page">
+
+
+  <h4>Thanks, you paid <strong><%= number_to_currency(@transaction.promotion.price) %> </strong>!</h4>
+
+  Your confirmation code is <div id="conf-text"> <%= @transaction.confirmation_code%></div>
+
+</div>

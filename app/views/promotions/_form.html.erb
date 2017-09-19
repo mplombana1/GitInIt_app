@@ -1,0 +1,44 @@
+	<%= form_with(model: [@venue, @venue.promotions.build], remote: true) do |form| %>
+		<% if @venue.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@venue.errors.count, "error") %> prohibited this @venue from being saved:</h2>
+
+				<ul>
+					<% @venue.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+
+		<div class="container col-lg-9" id="promotion-form">
+			<div class="row">
+				<div class="col-lg-12">
+					<div>
+						<div id="promotiontext"><h3>Set your event pricing below!</h3></div>
+
+						<%= form.text_field :name,  class: 'form-control', id: 'promotion-name', placeholder: 'Event Name' %>
+
+						<div class="form-group">
+						 <label for="exampleFormControlTextarea1"></label>
+						 <%= form.text_area :description,  class: 'form-control', id: 'promotion-description', placeholder: 'Event Description' %>
+					  </div>
+
+						<%= form.number_field(:price, min: 1, class: 'form-control', placeholder: 'Price ($) ') %>
+						<br>
+						<%= form.label "Select Day and Time", id: "select-day-time" %>
+						<%= form.select :day_of_week, ['Sunday','Monday','Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ], :prompt => 'Day' %>
+
+
+						<%= form.time_select(:time, {minute_step: 15})%><br>
+
+						<%= form.submit "Save Event", class: 'btn btn-success', id: 'promotion-submit' %>
+
+
+				 </div>
+			 </div>
+		 </div>
+	 </div>
+</div>
+
+<% end %>

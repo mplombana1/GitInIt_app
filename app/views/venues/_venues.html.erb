@@ -1,0 +1,13 @@
+<div id="content">
+	<% @venues.each do |venue| %>
+		<div class="row">
+			<%= link_to venue do %>
+				<div class="venue-button col-md-12">
+					<div id="venuenamefield"><%= venue.name %></div>
+					<br>
+					<div id="venueaddressfield"><%= venue.address %></div>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+</div>
